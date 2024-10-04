@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CostItem } from "./components/CostItem/CostItem"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dateCost = [
+    {
+      date: '2024.10.04',
+      name: 'AirPods',
+      amount: '7 999'
+    },
+    {
+      date: '2024.10.20',
+      name: 'MacBook',
+      amount: '27 999'
+    },
+    {
+      date: '2024.10.15',
+      name: 'Iphone',
+      amount: '15 999'
+    },
+  ];
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>Start Pet-project</h2>
+
+      {
+        dateCost.map( (item, i) => {
+         return <CostItem key={i} date={item.date} name={item.name} amount={item.amount} />
+        })
+      }
     </>
   )
 }
