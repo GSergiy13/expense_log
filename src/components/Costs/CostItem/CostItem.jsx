@@ -1,9 +1,12 @@
-import './CostItem.scss';
+import { CardContainer } from '../../UI/CardContainer/CardContainer';
+import { CostDate } from '../CostDate/CostDate';
+import './costItem.scss';
 
 export const CostItem = ({date, name, amount}) => {
   return (
-    <div className='cost-item'>
-      <div>{new Date(date).toISOString()}</div>
+    <CardContainer className='cost-item'>
+
+      <CostDate date={date} />
 
       <div className='cost-item__description'>
         <h2>{name}</h2>
@@ -12,6 +15,6 @@ export const CostItem = ({date, name, amount}) => {
           {amount} грн
         </div> 
       </div>
-    </div>
+    </CardContainer>
   )
 };
