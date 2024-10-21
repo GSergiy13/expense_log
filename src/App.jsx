@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Cost } from "./components/Costs/Cost";
+import { NewCost } from "./components/NewCost/NewCost";
 
 export const App = () => {
-  const dateCost = [
+  const [dateCost, setCostDate] = useState([
     {
       id: '032',
       date: new Date('2024.10.04'),
@@ -20,11 +22,21 @@ export const App = () => {
       name: 'Iphone',
       amount: '15 999'
     },
-  ];
+  ]);
+
+  const onAddCost = (newCost) => {
+
+    setCostDate((prevState) => {
+      return [
+        ...prevState,
+        newCost
+      ]
+    })
+  }
 
   return (
     <>
-      <h2>Start Pet-project</h2>
+      <NewCost onAddCost={onAddCost} />
 
       <Cost date={dateCost} />
     </>
