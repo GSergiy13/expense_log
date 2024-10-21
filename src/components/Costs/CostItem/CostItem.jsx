@@ -4,17 +4,18 @@ import './costItem.scss';
 
 export const CostItem = ({date, name, amount}) => {
   return (
-    <CardContainer className='cost-item'>
+    <li>
+      <CardContainer className='cost-item'>
+        <CostDate date={date} />
 
-      <CostDate date={date} />
+        <div className='cost-item__description'>
+          <h2>{name}</h2>
 
-      <div className='cost-item__description'>
-        <h2>{name}</h2>
-
-        <div className='cost-item__price'>
-          {amount} грн
-        </div> 
-      </div>
-    </CardContainer>
+          <div className='cost-item__price'>
+            {amount} грн
+          </div> 
+        </div>
+      </CardContainer>
+    </li>
   )
 };

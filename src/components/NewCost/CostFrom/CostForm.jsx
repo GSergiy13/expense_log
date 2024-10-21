@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 import './costFrom.scss';
+import { Button } from '../../UI/Button/Button';
 
-export const CostForm = ({onSaveCostData}) => {
+export const CostForm = ({onSaveCostData, cancelFormHendler}) => {
   const [costInput, setCost] = useState({
     name: '',
     amount: '',
@@ -45,7 +46,9 @@ export const CostForm = ({onSaveCostData}) => {
       date: new Date(costInput.date)
     }
 
-    onSaveCostData(newCostDate)
+    onSaveCostData(newCostDate);
+
+    cancelFormHendler();
 
     setCost({
       name: '',
@@ -53,6 +56,7 @@ export const CostForm = ({onSaveCostData}) => {
       date: ''
     });
   }
+
 
   return (
     <form onSubmit={formSubmitHendler}>
@@ -71,9 +75,9 @@ export const CostForm = ({onSaveCostData}) => {
         </div>
 
         <div className="new-cost__actions">
-          <button type="submit">
-            Додати розход
-          </button>
+          <Button>Додати розход</Button>
+
+          <Button type='button' hendler={cancelFormHendler}>Відміна</Button>
         </div>
       </div>
     </form>
